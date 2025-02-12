@@ -24,6 +24,17 @@ connections. As WebREPL is intended to be used only within a user's
 local network, HTTPS isn't strictly required, and not accessing
 webrepl.html over HTTPS is a suggested workaround.
 
+WebREPL remote console
+----------------------
+
+The webrepl.py script can be used to connect from remote to a device.
+Run
+
+    webrepl_scp.py --help
+
+to see usage information. Note that you will need the python websocket_client
+module.
+
 WebREPL file transfer
 ---------------------
 
@@ -32,14 +43,14 @@ This feature is currently in alpha and has known issues on systems
 which have it enabled (ESP8266).
 
 To use WebREPL file transfer capabilities, a separate command line
-utility is provided, webrepl_cli.py (file transfer is not supported
+utility is provided, webrepl_scp.py (file transfer is not supported
 via webrepl.html client). Run
 
-    webrepl_cli.py --help
+    webrepl_scp.py --help
 
 to see usage information. Note that there can be only one active
 WebREPL connection, so while webrepl.html is connected to device,
-webrepl_cli.py can't transfer files, and vice versa.
+webrepl_scp.py can't transfer files, and vice versa.
 
 
 Technical details
@@ -102,7 +113,7 @@ This protocol uses WebSocket "binary"-flagged messages. At this point,
 this protocol is in early research/design/proof-of-concept phase. The
 only available specification of it is the reference code implementation,
 and the protocol is subject to frequent and incompatible changes.
-The `webrepl_cli.py` module mentioned above intended to be both a
+The `webrepl_scp.py` module mentioned above intended to be both a
 command-line tool and a library for 3rd-party projects to use, though
 it may not be there yet. If you're interested in integrating WebREPL
 transfer/control capabilities into your application, please submit
